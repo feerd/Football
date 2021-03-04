@@ -1,7 +1,7 @@
 package football.model;
 
 public class User {
-    private String playerUUID;
+    private String userUUID;
     private String userName;
     private String password;
 

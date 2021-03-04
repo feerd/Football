@@ -9,7 +9,9 @@ package football.model;
  */
 public class Team {
     private String teamUUID;
-    private String publisher;
+    private String name;
+    private String shortcut;
+    private int foundingYear;
 
     /**
      * Gets the publisherUUID
@@ -31,21 +33,29 @@ public class Team {
     }
 
     /**
-     * Gets the publisher
-     *
-     * @return value of publisher
+     * @return name
      */
-    public String getPublisher() {
-        return publisher;
+    public String getName() {
+        return name;
     }
 
-    /**
-     * Sets the publisher
-     *
-     * @param publisher the value to set
-     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
+    public String getShortcut() {
+        return shortcut;
+    }
+
+    public void setShortcut(String shortcut) {
+        this.shortcut = shortcut;
+    }
+
+    public int getFoundingYear() {
+        return foundingYear;
+    }
+
+    public void setFoundingYear(int foundingYear) {
+        this.foundingYear = foundingYear;
     }
 }
