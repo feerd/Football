@@ -52,7 +52,6 @@ public class Player {
     }
 
 
-
     /**
      * Gets the publisher
      *

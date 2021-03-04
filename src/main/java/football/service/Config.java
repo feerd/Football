@@ -24,19 +24,6 @@ public class Config extends Application {
     private static Properties properties = null;
 
     /**
-     * define all provider classes
-     *
-     * @return set of classes
-     */
-    @Override
-    public Set<Class<?>> getClasses() {
-        HashSet providers = new HashSet<Class<?>>();
-        providers.add(TestService.class);
-        providers.add(PlayerService.class);
-        return providers;
-    }
-
-    /**
      * Gets the value of a property
      *
      * @param property the key of the property to be read
@@ -86,5 +73,18 @@ public class Config extends Application {
 
     private static void setProperties(Properties properties) {
         Config.properties = properties;
+    }
+
+    /**
+     * define all provider classes
+     *
+     * @return set of classes
+     */
+    @Override
+    public Set<Class<?>> getClasses() {
+        HashSet providers = new HashSet<Class<?>>();
+        providers.add(TestService.class);
+        providers.add(PlayerService.class);
+        return providers;
     }
 }

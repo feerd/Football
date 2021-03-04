@@ -37,7 +37,8 @@ public class DataHandler {
 
     /**
      * reads a single book identified by its uuid
-     * @param bookUUID  the identifier
+     *
+     * @param bookUUID the identifier
      * @return book-object
      */
     public static Player readPlayer(String bookUUID) {
@@ -50,7 +51,8 @@ public class DataHandler {
 
     /**
      * saves a book
-     * @param player  the book to be saved
+     *
+     * @param player the book to be saved
      */
     public static void savePlayer(Player player) {
         getPlayerMap().put(player.getPlayerUUID(), player);
@@ -59,7 +61,8 @@ public class DataHandler {
 
     /**
      * reads a single publisher identified by its uuid
-     * @param publisherUUID  the identifier
+     *
+     * @param publisherUUID the identifier
      * @return publisher-object
      */
     public static Team readPublisher(String publisherUUID) {
@@ -72,7 +75,8 @@ public class DataHandler {
 
     /**
      * saves a publisher
-     * @param team  the publisher to be saved
+     *
+     * @param team the publisher to be saved
      */
     public static void saveTeam(Team team) {
         getTeamMap().put(team.getTeamUUID(), team);
@@ -81,6 +85,7 @@ public class DataHandler {
 
     /**
      * gets the bookMap
+     *
      * @return the bookMap
      */
     public static Map<String, Player> getPlayerMap() {
@@ -89,6 +94,7 @@ public class DataHandler {
 
     /**
      * gets the publisherMap
+     *
      * @return the publisherMap
      */
     public static Map<String, Team> getTeamMap() {
@@ -127,7 +133,6 @@ public class DataHandler {
 
     /**
      * write the books and publishers
-     *
      */
     private static void writeJSON() {
         ObjectMapper objectMapper = new ObjectMapper();

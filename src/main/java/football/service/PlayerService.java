@@ -1,7 +1,6 @@
 package football.service;
 
 
-
 import football.data.DataHandler;
 import football.model.Player;
 
