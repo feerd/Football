@@ -21,7 +21,7 @@ import java.util.UUID;
  *
  * @author David Feer
  */
-@Path("book")
+@Path("player")
 public class PlayerService {
 
     /**

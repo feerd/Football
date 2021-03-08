@@ -1,0 +1,22 @@
+[
+  {
+    "playerUUID": "3247c340-c712-402e-b400-0a23a9368c97",
+    "name": "David",
+    "team": {
+      "teamUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+      "name": "FC Nidi",
+      "shortcut": "FCN",
+      "foundingYear": "1291"
+    }
+  },
+  {
+    "playerUUID": "3147c340-c712-402e-b400-0a23a9368c97",
+    "name": "Noah",
+    "team": {
+      "teamUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+      "name": "FC Nidi",
+      "shortcut": "FCN",
+      "foundingYear": "1291"
+    }
+  }
+]

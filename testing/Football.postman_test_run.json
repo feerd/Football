@@ -1,0 +1,154 @@
+{
+  "id": "592164db-08fc-49b8-a9e6-1e6b0ecfce35",
+  "name": "Football",
+  "timestamp": "2021-03-08T10:25:09.155Z",
+  "collection_id": "4792a8bd-2851-435e-8d4f-0ccab7c79ef5",
+  "folder_id": 0,
+  "environment_id": "0",
+  "totalPass": 3,
+  "totalFail": 3,
+  "results": [
+    {
+      "id": "349b197a-c5b5-4026-8401-060acd1c9fa0",
+      "name": "LU3.1 Spielerliste",
+      "url": "http://localhost:8080/Football-1.0/resource/player/list",
+      "time": 7,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Status test": true,
+        "validate response": false
+      },
+      "testPassFailCounts": {
+        "Status test": {
+          "pass": 1,
+          "fail": 0
+        },
+        "validate response": {
+          "pass": 0,
+          "fail": 1
+        }
+      },
+      "times": [
+        7
+      ],
+      "allTests": [
+        {
+          "Status test": true,
+          "validate response": false
+        }
+      ]
+    },
+    {
+      "id": "26058a3f-92b1-42af-b9b7-4d3c7c197129",
+      "name": "LU3.2 Read player",
+      "url": "http://localhost:8080/Football-1.0/resource/player/read?uuid=3247c340-c712-402e-b400-0a23a9368c97",
+      "time": 4,
+      "responseCode": {
+        "code": 404,
+        "name": "Not Found"
+      },
+      "tests": {
+        "Status test": false,
+        "validate response": false
+      },
+      "testPassFailCounts": {
+        "Status test": {
+          "pass": 0,
+          "fail": 1
+        },
+        "validate response": {
+          "pass": 0,
+          "fail": 1
+        }
+      },
+      "times": [
+        4
+      ],
+      "allTests": [
+        {
+          "Status test": false,
+          "validate response": false
+        }
+      ]
+    },
+    {
+      "id": "372f061e-76cb-4e7e-858a-c99d5c65a80e",
+      "name": "LU3.3 Read unkown Player",
+      "url": "http://localhost:8080/Football-1.0/resource/player/read?uuid=3247c340-ffff-402e-b400-0a23a9368c97",
+      "time": 5,
+      "responseCode": {
+        "code": 404,
+        "name": "Not Found"
+      },
+      "tests": {
+        "Status test": true
+      },
+      "testPassFailCounts": {
+        "Status test": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        5
+      ],
+      "allTests": [
+        {
+          "Status test": true
+        }
+      ]
+    },
+    {
+      "id": "dc8d8c7a-5199-4119-9745-1e78d338e187",
+      "name": "LU3.4 Read player with inavlid uuid",
+      "url": "http://localhost:8080/Football-1.0/resource/player/read?uuid=3247c340-xyzq-402e-b400-0a23a9368c97",
+      "time": 4,
+      "responseCode": {
+        "code": 400,
+        "name": "Bad Request"
+      },
+      "tests": {
+        "Status test": true
+      },
+      "testPassFailCounts": {
+        "Status test": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        4
+      ],
+      "allTests": [
+        {
+          "Status test": true
+        }
+      ]
+    }
+  ],
+  "count": 1,
+  "totalTime": 20,
+  "collection": {
+    "requests": [
+      {
+        "id": "349b197a-c5b5-4026-8401-060acd1c9fa0",
+        "method": "GET"
+      },
+      {
+        "id": "26058a3f-92b1-42af-b9b7-4d3c7c197129",
+        "method": "GET"
+      },
+      {
+        "id": "372f061e-76cb-4e7e-858a-c99d5c65a80e",
+        "method": "GET"
+      },
+      {
+        "id": "dc8d8c7a-5199-4119-9745-1e78d338e187",
+        "method": "GET"
+      }
+    ]
+  }
+}
