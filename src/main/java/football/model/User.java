@@ -12,6 +12,14 @@ public class User {
     private String userName;
     private String password;
 
+
+    /**
+     * @return value of userName
+     */
+    public String getUserName() {
+        return userName;
+    }
+
     /**
      * logs the user on
      */

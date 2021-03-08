@@ -2,6 +2,7 @@ package football.data;
 
 import football.model.Player;
 import football.model.Team;
+import football.model.User;
 import football.service.Config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -25,6 +26,7 @@ public class DataHandler {
     private static final DataHandler instance = new DataHandler();
     private static Map<String, Player> playerMap;
     private static Map<String, Team> teamMap;
+    private static Map<String, User> userMap;
 
     /**
      * default constructor: defeat instantiation
@@ -32,6 +34,8 @@ public class DataHandler {
     private DataHandler() {
         playerMap = new HashMap<>();
         teamMap = new HashMap<>();
+        userMap = new HashMap<>();
+
         readJSON();
     }
 
@@ -65,13 +69,28 @@ public class DataHandler {
      * @param publisherUUID the identifier
      * @return publisher-object
      */
-    public static Team readPublisher(String publisherUUID) {
+    public static Team readTeam(String publisherUUID) {
         Team team = new Team();
         if (getTeamMap().containsKey(publisherUUID)) {
             team = getTeamMap().get(publisherUUID);
         }
         return team;
     }
+
+    /**
+     * reads a single publisher identified by its uuid
+     *
+     * @param userUUID the identifier
+     * @return publisher-object
+     */
+    public static User readUser(String userUUID) {
+        User user = new User();
+        if (getTeamMap().containsKey(userUUID)) {
+            user = getUserMap().get(userUUID);
+        }
+        return user;
+    }
+
 
     /**
      * saves a publisher
@@ -101,6 +120,20 @@ public class DataHandler {
         return teamMap;
     }
 
+    /**
+     * gets the userMap
+     *
+     * @return the userMap
+     */
+    public static Map<String, User> getUserMap() {
+        return userMap;
+    }
+
+    /**
+     * sets the teamMap
+     *
+     * @param teamMap the value to set
+     */
     public static void setTeamMap(Map<String, Team> teamMap) {
         DataHandler.teamMap = teamMap;
     }

@@ -2,7 +2,6 @@ package football.service;
 
 
 import football.data.DataHandler;
-import football.model.Player;
 import football.model.Team;
 
 import javax.ws.rs.GET;
@@ -54,13 +53,13 @@ public class TeamService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readBook(@QueryParam("uuid") String teamUUID) {
-        Player player = null;
+        Team team = null;
         int httpStatus;
 
         try {
             UUID.fromString(teamUUID);
-            player = DataHandler.readPlayer(teamUUID);
-            if (player.getName() == null) {
+            team = DataHandler.readTeam(teamUUID);
+            if (team.getName() == null) {
                 httpStatus = 404;
             } else {
                 httpStatus = 200;
@@ -72,7 +71,7 @@ public class TeamService {
 
         Response response = Response
                 .status(httpStatus)
-                .entity(player)
+                .entity(team)
                 .build();
 
         return response;
