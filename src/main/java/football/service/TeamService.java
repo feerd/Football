@@ -3,6 +3,7 @@ package football.service;
 
 import football.data.DataHandler;
 import football.model.Player;
+import football.model.Team;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -21,11 +22,11 @@ import java.util.UUID;
  *
  * @author David Feer
  */
-@Path("player")
-public class PlayerService {
+@Path("team")
+public class TeamService {
 
     /**
-     * produces a map of all books
+     * produces a map of all teams
      *
      * @return Response
      */
@@ -33,32 +34,32 @@ public class PlayerService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listBooks() {
-        Map<String, Player> playerMap = DataHandler.getPlayerMap();
+        Map<String, Team> teamMap = DataHandler.getTeamMap();
 
         Response response = Response
                 .status(200)
-                .entity(playerMap)
+                .entity(teamMap)
                 .build();
 
         return response;
     }
 
     /**
-     * reads a single player identified by the playerId
+     * reads a single team identified by the teamId
      *
-     * @param playerUUID identifier
+     * @param teamUUID identifier
      * @return Response
      */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readBook(@QueryParam("uuid") String playerUUID) {
+    public Response readBook(@QueryParam("uuid") String teamUUID) {
         Player player = null;
         int httpStatus;
 
         try {
-            UUID.fromString(playerUUID);
-            player = DataHandler.readPlayer(playerUUID);
+            UUID.fromString(teamUUID);
+            player = DataHandler.readPlayer(teamUUID);
             if (player.getName() == null) {
                 httpStatus = 404;
             } else {

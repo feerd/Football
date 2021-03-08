@@ -16,6 +16,11 @@ import javax.ws.rs.core.Response;
 @Path("test")
 public class TestService {
 
+    /**
+     * test service
+     *
+     * @return Response
+     */
     @GET
     @Path("test")
     @Produces(MediaType.TEXT_PLAIN)
