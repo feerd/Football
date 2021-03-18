@@ -1,35 +1,35 @@
 package football.model;
 
 /**
- * a football player
+ * a football Team
  * <p>
  * Football
  *
  * @author David Feer
  */
-public class Player {
-    private String playerUUID;
+public class Trainer {
+    private String trainerUUID;
     private String name;
     private Team team;
 
 
     /**
-     * Gets the bookUUID
+     * Gets the trainerUUID
      *
      * @return value of bookUUID
      */
-    public String getPlayerUUID() {
-        return playerUUID;
+    public String getTrainerUUID() {
+        return trainerUUID;
     }
 
     /**
-     * Sets the bookUUID
+     * Sets the trainerUUID
      *
-     * @param playerUUID the value to set
+     * @param trainerUUID the value to set
      */
 
-    public void setPlayerUUID(String playerUUID) {
-        this.playerUUID = playerUUID;
+    public void setTrainerUUID(String trainerUUID) {
+        this.trainerUUID = trainerUUID;
     }
 
     /**

@@ -17,7 +17,7 @@ import java.util.UUID;
  * <p>
  * Football
  *
- * @author David Feer
+ * @author Dawvid Feer
  */
 @Path("user")
 public class UserService {

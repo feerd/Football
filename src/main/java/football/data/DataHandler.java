@@ -2,6 +2,7 @@ package football.data;
 
 import football.model.Player;
 import football.model.Team;
+import football.model.Trainer;
 import football.model.User;
 import football.service.Config;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,6 +28,7 @@ public class DataHandler {
     private static Map<String, Player> playerMap;
     private static Map<String, Team> teamMap;
     private static Map<String, User> userMap;
+    private static Map<String, Trainer> trainerMap;
 
     /**
      * default constructor: defeat instantiation
@@ -35,7 +37,7 @@ public class DataHandler {
         playerMap = new HashMap<>();
         teamMap = new HashMap<>();
         userMap = new HashMap<>();
-
+        trainerMap = new HashMap<>();
         readJSON();
     }
 
@@ -91,6 +93,20 @@ public class DataHandler {
         return user;
     }
 
+    /**
+     * reads a single publisher identified by its uuid
+     *
+     * @param userUUID the identifier
+     * @return publisher-object
+     */
+    public static Trainer readTrainer(String userUUID) {
+        Trainer trainer = new Trainer();
+        if (getTeamMap().containsKey(userUUID)) {
+            trainer = getTrainerMap().get(userUUID);
+        }
+        return trainer;
+    }
+
 
     /**
      * saves a publisher
@@ -130,6 +146,15 @@ public class DataHandler {
     }
 
     /**
+     * gets the userMap
+     *
+     * @return the userMap
+     */
+    public static Map<String, Trainer> getTrainerMap() {
+        return trainerMap;
+    }
+
+    /**
      * sets the teamMap
      *
      * @param teamMap the value to set
@@ -139,23 +164,54 @@ public class DataHandler {
     }
 
     /**
+     * inserts a new book into the bookmap
+     *
+     * @param player the book to be saved
+     */
+    public static void insertPLayer(Player player) {
+        getPlayerMap().put(player.getPlayerUUID(), player);
+        writeJSON();
+    }
+
+    /**
+     * updates the playerMap
+     */
+    public static void updatePlayer() {
+        writeJSON();
+    }
+
+    /**
+     * removes a book from the bookmap
+     *
+     * @param playerUUID the uuid of the book to be removed
+     * @return success
+     */
+    public static boolean deletePlayer(String playerUUID) {
+        if (getPlayerMap().remove(playerUUID) != null) {
+            writeJSON();
+            return true;
+        } else
+            return false;
+    }
+
+    /**
      * reads the books and publishers
      */
     private static void readJSON() {
         try {
-            byte[] jsonData = Files.readAllBytes(Paths.get(Config.getProperty("bookJSON")));
+            byte[] jsonData = Files.readAllBytes(Paths.get(Config.getProperty("playerJSON")));
             ObjectMapper objectMapper = new ObjectMapper();
             Player[] players = objectMapper.readValue(jsonData, Player[].class);
             for (Player book : players) {
-                String publisherUUID = book.getPublisher().getTeamUUID();
+                String teamUUID = book.getTeam().getTeamUUID();
                 Team team;
-                if (getTeamMap().containsKey(publisherUUID)) {
-                    team = getTeamMap().get(publisherUUID);
+                if (getTeamMap().containsKey(teamUUID)) {
+                    team = getTeamMap().get(teamUUID);
                 } else {
-                    team = book.getPublisher();
-                    getTeamMap().put(publisherUUID, team);
+                    team = book.getTeam();
+                    getTeamMap().put(teamUUID, team);
                 }
-                book.setPublisher(team);
+                book.setTeam(team);
                 getPlayerMap().put(book.getPlayerUUID(), book);
 
             }
