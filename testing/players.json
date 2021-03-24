@@ -1,12 +1,42 @@
 [
   {
-    "playerUUID": "3247c340-c712-402e-b400-0a23a9368c97",
-    "name": "David",
+    "playerUUID": "8eda194f-8720-41e1-bc6f-05d614535869",
+    "name": "",
+    "team": {
+      "teamUUID": "4b92c2e8-39c6-4418-9292-f8025467a455",
+      "name": "RealMadrid",
+      "shortcut": null,
+      "foundingYear": 0
+    }
+  },
+  {
+    "playerUUID": "888f8494-4f31-48fb-8830-8df23e9e7f2d",
+    "name": "NewBook",
     "team": {
       "teamUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
-      "name": "FC Nidi",
-      "shortcut": "FCN",
-      "foundingYear": "1291"
+      "name": "FC Schleinikon",
+      "shortcut": null,
+      "foundingYear": 0
+    }
+  },
+  {
+    "playerUUID": "79495a4c-d9a4-4782-863c-311292f8e706",
+    "name": "NewBook",
+    "team": {
+      "teamUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+      "name": "FC Schleinikon",
+      "shortcut": null,
+      "foundingYear": 0
+    }
+  },
+  {
+    "playerUUID": "3cabf673-ae2b-491e-a6d4-c44ce4798ca2",
+    "name": "NewBook",
+    "team": {
+      "teamUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+      "name": "FC Schleinikon",
+      "shortcut": null,
+      "foundingYear": 0
     }
   },
   {
@@ -14,9 +44,119 @@
     "name": "Noah",
     "team": {
       "teamUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
-      "name": "FC Nidi",
-      "shortcut": "FCN",
-      "foundingYear": "1291"
+      "name": "FC Schleinikon",
+      "shortcut": null,
+      "foundingYear": 0
+    }
+  },
+  {
+    "playerUUID": "9b5a9422-f250-47a7-9dd5-c4b54ad3c7ec",
+    "name": "NewBook",
+    "team": {
+      "teamUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+      "name": "FC Schleinikon",
+      "shortcut": null,
+      "foundingYear": 0
+    }
+  },
+  {
+    "playerUUID": "f5da8036-3cb0-43c5-acbe-c0035ae5b955",
+    "name": "NewBook",
+    "team": {
+      "teamUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+      "name": "FC Schleinikon",
+      "shortcut": null,
+      "foundingYear": 0
+    }
+  },
+  {
+    "playerUUID": "bffbbd8b-1fc4-4ad7-9528-06eeafcd0cd2",
+    "name": "NewBook",
+    "team": {
+      "teamUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+      "name": "FC Schleinikon",
+      "shortcut": null,
+      "foundingYear": 0
+    }
+  },
+  {
+    "playerUUID": "4f23b953-25e6-4ca4-9ed7-b2b85dc2c9ae",
+    "name": "NewBook",
+    "team": {
+      "teamUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+      "name": "FC Schleinikon",
+      "shortcut": null,
+      "foundingYear": 0
+    }
+  },
+  {
+    "playerUUID": "fb77e27d-aadf-4595-9d42-d1671c38f716",
+    "name": "Dave",
+    "team": {
+      "teamUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+      "name": "FC Schleinikon",
+      "shortcut": null,
+      "foundingYear": 0
+    }
+  },
+  {
+    "playerUUID": "656338cd-43e4-4183-9740-392d006f7f2a",
+    "name": "",
+    "team": {
+      "teamUUID": "1d1993ba-73a8-474c-8603-cf1e9036f6e3",
+      "name": "RealMadrid",
+      "shortcut": null,
+      "foundingYear": 0
+    }
+  },
+  {
+    "playerUUID": "4f81f709-cad1-4497-9c0c-5c20a99fe083",
+    "name": "NewBook",
+    "team": {
+      "teamUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+      "name": "FC Schleinikon",
+      "shortcut": null,
+      "foundingYear": 0
+    }
+  },
+  {
+    "playerUUID": "3f227402-4dff-4456-ab6a-267d383a447b",
+    "name": "NewBook",
+    "team": {
+      "teamUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+      "name": "FC Schleinikon",
+      "shortcut": null,
+      "foundingYear": 0
+    }
+  },
+  {
+    "playerUUID": "67e06e0e-9428-4c14-ae38-b2519b3a2995",
+    "name": "",
+    "team": {
+      "teamUUID": "e9557a86-164a-4866-b999-63e4600ba3f9",
+      "name": "RealMadrid",
+      "shortcut": null,
+      "foundingYear": 0
+    }
+  },
+  {
+    "playerUUID": "84c4839c-df7e-4ac4-8f43-adc4737bd97c",
+    "name": "NewBook",
+    "team": {
+      "teamUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+      "name": "FC Schleinikon",
+      "shortcut": null,
+      "foundingYear": 0
+    }
+  },
+  {
+    "playerUUID": "64d23c6f-d46c-464c-98eb-6bdfd4a0d922",
+    "name": "NewBook",
+    "team": {
+      "teamUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+      "name": "FC Schleinikon",
+      "shortcut": null,
+      "foundingYear": 0
     }
   }
 ]

@@ -16,7 +16,7 @@ public class Trainer {
     /**
      * Gets the trainerUUID
      *
-     * @return value of bookUUID
+     * @return value of trainerUUID
      */
     public String getTrainerUUID() {
         return trainerUUID;

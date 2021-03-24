@@ -5,6 +5,9 @@ import football.data.DataHandler;
 import football.model.Player;
 import football.model.Team;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -23,14 +26,14 @@ import java.util.UUID;
 public class PlayerService {
 
     /**
-     * produces a map of all books
+     * produces a map of all players
      *
      * @return Response
      */
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listBooks() {
+    public Response listPlayers() {
         Map<String, Player> playerMap = DataHandler.getPlayerMap();
 
         Response response = Response
@@ -50,7 +53,7 @@ public class PlayerService {
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readBook(@QueryParam("uuid") String playerUUID) {
+    public Response readPlayer(@QueryParam("uuid") String playerUUID) {
         Player player = null;
         int httpStatus;
 
@@ -76,7 +79,7 @@ public class PlayerService {
     }
 
     /**
-     * creates a new book
+     * creates a new player
      *
      * @param name     the name of the player
      * @param teamUUID the unique key of the team
@@ -85,9 +88,17 @@ public class PlayerService {
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response createBook(
-            @FormParam("name") String name,
-            @FormParam("teamUUID") String teamUUID
+    public Response createPlayer(
+            @FormParam("name")
+            @NotEmpty
+            @Size(min = 2, max = 40)
+                    String name,
+
+            @FormParam("teamUUID")
+            @NotEmpty
+            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                    String teamUUID
+
     ) {
         int httpStatus = 200;
         Player player = new Player();
@@ -109,7 +120,7 @@ public class PlayerService {
     }
 
     /**
-     * updates an existing book
+     * updates an existing player
      *
      * @param playerUUID the unique key of the player
      * @param name       the name of the player
@@ -119,10 +130,21 @@ public class PlayerService {
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response updateBook(
-            @FormParam("playerUUID") String playerUUID,
-            @FormParam("author") String name,
-            @FormParam("teamUUID") String teamUUID
+    public Response updatePlayer(
+            @FormParam("playerUUID")
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                    String playerUUID,
+
+            @FormParam("name")
+            @NotEmpty
+            @Size(min = 2, max = 40)
+                    String name,
+
+            @FormParam("teamUUID")
+            @NotEmpty
+            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                    String teamUUID
     ) {
         int httpStatus = 200;
         Player player;
@@ -135,7 +157,6 @@ public class PlayerService {
                         player,
                         name,
                         teamUUID
-
                 );
                 DataHandler.updatePlayer();
             } else {
@@ -153,16 +174,19 @@ public class PlayerService {
     }
 
     /**
-     * deletes an existing book identified by its uuid
+     * deletes an existing player identified by its uuid
      *
-     * @param playerUUID the unique key for the book
+     * @param playerUUID the unique key for the player
      * @return Response
      */
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response deleteBook(
-            @QueryParam("uuid") String playerUUID
+    public Response deletePlayer(
+            @FormParam("uuid")
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+                    String playerUUID
     ) {
         int httpStatus;
         try {
@@ -186,7 +210,7 @@ public class PlayerService {
     }
 
     /**
-     * sets the attribute values of the book object
+     * sets the attribute values of the player object
      *
      * @param player   the player object
      * @param name     the player name

@@ -1,0 +1,682 @@
+{
+  "info": {
+    "_postman_id": "4792a8bd-2851-435e-8d4f-0ccab7c79ef5",
+    "name": "Football",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "0.1 Testservice",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/Bookshelf-0.1/resource/test/test",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "Bookshelf-0.1",
+            "resource",
+            "test",
+            "test"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LU3.1 Spielerliste",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status test\", function(){",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"validate response\", function(){",
+              "pm.response.to.be.json;",
+              "pm.expect(pm.response.text()).to.include(\"name\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}resource/player/list",
+          "host": [
+            "{{url}}resource"
+          ],
+          "path": [
+            "player",
+            "list"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LU3.2 Read player",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status test\", function() {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"validate response\", function(){",
+              "    pm.response.to.be.json;",
+              "    const responseJson = pm.response.json();",
+              "    pm.expect(responseJson.name).to.eql(\"Dave\");",
+              "});",
+              "pm.globals.get(\"variable_key\");"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}resource/player/read?uuid=fb77e27d-aadf-4595-9d42-d1671c38f716",
+          "host": [
+            "{{url}}resource"
+          ],
+          "path": [
+            "player",
+            "read"
+          ],
+          "query": [
+            {
+              "key": "uuid",
+              "value": "fb77e27d-aadf-4595-9d42-d1671c38f716"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LU3.3 Read unkown Player",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status test\", function(){",
+              "    pm.response.to.have.status(404);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}resource/player/read?uuid=3247c340-ffff-402e-b400-0a23a9368c97",
+          "host": [
+            "{{url}}resource"
+          ],
+          "path": [
+            "player",
+            "read"
+          ],
+          "query": [
+            {
+              "key": "uuid",
+              "value": "3247c340-ffff-402e-b400-0a23a9368c97"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LU3.4 Read player with inavlid uuid",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status test\", function(){",
+              "    pm.response.to.have.status(400);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}resource/player/read?uuid=3247c340-xyzq-402e-b400-0a23a9368c97",
+          "host": [
+            "{{url}}resource"
+          ],
+          "path": [
+            "player",
+            "read"
+          ],
+          "query": [
+            {
+              "key": "uuid",
+              "value": "3247c340-xyzq-402e-b400-0a23a9368c97"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LU03.5 All Teams",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status test\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}resource/team/list",
+          "host": [
+            "{{url}}resource"
+          ],
+          "path": [
+            "team",
+            "list"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LU03.6 Read Team",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status test\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}resource/team/read?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+          "host": [
+            "{{url}}resource"
+          ],
+          "path": [
+            "team",
+            "read"
+          ],
+          "query": [
+            {
+              "key": "uuid",
+              "value": "ecd86148-5341-43c6-81ed-f3f4595965dc"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LU03.7 Read unknown Team",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status test\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}resource/team/read?uuid=fff86148-5341-43c6-81ed-f3f4595965dc",
+          "host": [
+            "{{url}}resource"
+          ],
+          "path": [
+            "team",
+            "read"
+          ],
+          "query": [
+            {
+              "key": "uuid",
+              "value": "fff86148-5341-43c6-81ed-f3f4595965dc"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LU03.8 Read Team with invalid uuid",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status test\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}resource/team/read?uuid=fff86148-5341-43c6-81ed",
+          "host": [
+            "{{url}}resource"
+          ],
+          "path": [
+            "team",
+            "read"
+          ],
+          "query": [
+            {
+              "key": "uuid",
+              "value": "fff86148-5341-43c6-81ed"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LU04.1 Insert Player",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status test\", function(){",
+              "    pm.response.to.have.status(200);",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "name",
+              "value": "NewBook",
+              "type": "text"
+            },
+            {
+              "key": "teamUUID",
+              "value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}resource/player/create",
+          "host": [
+            "{{url}}resource"
+          ],
+          "path": [
+            "player",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LU04.2Update Player",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status test\", function(){",
+              "    pm.response.to.have.status(200);",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "playerUUID",
+              "value": "fb77e27d-aadf-4595-9d42-d1671c38f716",
+              "type": "text"
+            },
+            {
+              "key": "name",
+              "value": "Dave",
+              "type": "text"
+            },
+            {
+              "key": "teamUUID",
+              "value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}resource/player/update",
+          "host": [
+            "{{url}}resource"
+          ],
+          "path": [
+            "player",
+            "update"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LU04.3 Update unknown Player",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status test\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "bookUUID",
+              "value": "0046a291-0ef9-4b2a-8268-392b12d636bd",
+              "type": "text"
+            },
+            {
+              "key": "title",
+              "value": "NewBook",
+              "type": "text"
+            },
+            {
+              "key": "author",
+              "value": "J. R. R. R. Martin",
+              "type": "text"
+            },
+            {
+              "key": "publisherUUID",
+              "value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+              "type": "text"
+            },
+            {
+              "key": "price",
+              "value": "97.35",
+              "type": "text"
+            },
+            {
+              "key": "isbn",
+              "value": "978-0-1587-0987-3",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}resource/book/update",
+          "host": [
+            "{{url}}resource"
+          ],
+          "path": [
+            "book",
+            "update"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LU04.5 Delete Player",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status test\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{url}}resource/player/delete?uuid=dcabf673-ae2b-491e-a6d4-c44ce4798ca2",
+          "host": [
+            "{{url}}resource"
+          ],
+          "path": [
+            "player",
+            "delete"
+          ],
+          "query": [
+            {
+              "key": "uuid",
+              "value": "dcabf673-ae2b-491e-a6d4-c44ce4798ca2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LU04.10 Insert Team",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status test\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "teamName",
+              "value": "RealMadrid",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}resource/team/create",
+          "host": [
+            "{{url}}resource"
+          ],
+          "path": [
+            "team",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LU04.11 Update Team",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status test\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "teamName",
+              "value": "FC Schleinikon",
+              "type": "text"
+            },
+            {
+              "key": "teamUUID",
+              "value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}resource/team/update",
+          "host": [
+            "{{url}}resource"
+          ],
+          "path": [
+            "team",
+            "update"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LU04.12  Delete Team",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status test\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{url}}resource/team/delete?teamUUID=ecd86148-5341-43c6-81ed-f3f4595965dc",
+          "host": [
+            "{{url}}resource"
+          ],
+          "path": [
+            "team",
+            "delete"
+          ],
+          "query": [
+            {
+              "key": "teamUUID",
+              "value": "ecd86148-5341-43c6-81ed-f3f4595965dc"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "url",
+      "value": "http://localhost:8080/Football-1.0/"
+    }
+  ]
+}

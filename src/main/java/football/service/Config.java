@@ -1,5 +1,6 @@
 package football.service;
 
+import football.model.Team;
 import football.model.Trainer;
 
 import javax.ws.rs.ApplicationPath;
@@ -87,7 +88,8 @@ public class Config extends Application {
         HashSet providers = new HashSet<Class<?>>();
         providers.add(UserService.class);
         providers.add(PlayerService.class);
-        providers.add(Trainer.class);
+        providers.add(TeamService.class);
+        providers.add(TrainerService.class);
         return providers;
     }
 }

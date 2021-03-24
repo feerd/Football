@@ -3,6 +3,7 @@ package football.service;
 
 import football.data.DataHandler;
 import football.model.Player;
+import football.model.Trainer;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -32,12 +33,12 @@ public class TrainerService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listBooks() {
-        Map<String, Player> playerMap = DataHandler.getPlayerMap();
+    public Response listTrainers() {
+        Map<String, Trainer> trainerMap = DataHandler.getTrainerMap();
 
         Response response = Response
                 .status(200)
-                .entity(playerMap)
+                .entity(trainerMap)
                 .build();
 
         return response;
@@ -46,20 +47,20 @@ public class TrainerService {
     /**
      * reads a single player identified by the playerId
      *
-     * @param playerUUID identifier
+     * @param trainerUUID identifier
      * @return Response
      */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readBook(@QueryParam("uuid") String playerUUID) {
-        Player player = null;
+    public Response readTrainer(@QueryParam("uuid") String trainerUUID) {
+        Trainer trainer = null;
         int httpStatus;
 
         try {
-            UUID.fromString(playerUUID);
-            player = DataHandler.readPlayer(playerUUID);
-            if (player.getName() == null) {
+            UUID.fromString(trainerUUID);
+            trainer = DataHandler.readTrainer(trainerUUID);
+            if (trainer.getName() == null) {
                 httpStatus = 404;
             } else {
                 httpStatus = 200;
@@ -71,7 +72,7 @@ public class TrainerService {
 
         Response response = Response
                 .status(httpStatus)
-                .entity(player)
+                .entity(trainer)
                 .build();
 
         return response;

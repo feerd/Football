@@ -13,17 +13,18 @@ public class Player {
     private Team team;
 
 
+
     /**
-     * Gets the bookUUID
+     * Gets the playerUUID
      *
-     * @return value of bookUUID
+     * @return value of playerUUID
      */
     public String getPlayerUUID() {
         return playerUUID;
     }
 
     /**
-     * Sets the bookUUID
+     * Sets the playerUUID
      *
      * @param playerUUID the value to set
      */

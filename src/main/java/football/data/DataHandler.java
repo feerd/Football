@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * data handler for reading and writing the csv files
@@ -42,23 +43,23 @@ public class DataHandler {
     }
 
     /**
-     * reads a single book identified by its uuid
+     * reads a single player identified by its uuid
      *
-     * @param bookUUID the identifier
-     * @return book-object
+     * @param playerUUID the identifier
+     * @return player-object
      */
-    public static Player readPlayer(String bookUUID) {
+    public static Player readPlayer(String playerUUID) {
         Player player = new Player();
-        if (getPlayerMap().containsKey(bookUUID)) {
-            player = getPlayerMap().get(bookUUID);
+        if (getPlayerMap().containsKey(playerUUID)) {
+            player = getPlayerMap().get(playerUUID);
         }
         return player;
     }
 
     /**
-     * saves a book
+     * saves a player
      *
-     * @param player the book to be saved
+     * @param player the player to be saved
      */
     public static void savePlayer(Player player) {
         getPlayerMap().put(player.getPlayerUUID(), player);
@@ -66,24 +67,24 @@ public class DataHandler {
     }
 
     /**
-     * reads a single publisher identified by its uuid
+     * reads a single team identified by its uuid
      *
-     * @param publisherUUID the identifier
-     * @return publisher-object
+     * @param teamUUID the identifier
+     * @return team-object
      */
-    public static Team readTeam(String publisherUUID) {
+    public static Team readTeam(String teamUUID) {
         Team team = new Team();
-        if (getTeamMap().containsKey(publisherUUID)) {
-            team = getTeamMap().get(publisherUUID);
+        if (getTeamMap().containsKey(teamUUID)) {
+            team = getTeamMap().get(teamUUID);
         }
         return team;
     }
 
     /**
-     * reads a single publisher identified by its uuid
+     * reads a single team identified by its uuid
      *
      * @param userUUID the identifier
-     * @return publisher-object
+     * @return user-object
      */
     public static User readUser(String userUUID) {
         User user = new User();
@@ -94,10 +95,10 @@ public class DataHandler {
     }
 
     /**
-     * reads a single publisher identified by its uuid
+     * reads a single trainer identified by its uuid
      *
      * @param userUUID the identifier
-     * @return publisher-object
+     * @return trainer-object
      */
     public static Trainer readTrainer(String userUUID) {
         Trainer trainer = new Trainer();
@@ -109,9 +110,9 @@ public class DataHandler {
 
 
     /**
-     * saves a publisher
+     * saves a trainer
      *
-     * @param team the publisher to be saved
+     * @param team the trainer to be saved
      */
     public static void saveTeam(Team team) {
         getTeamMap().put(team.getTeamUUID(), team);
@@ -119,18 +120,18 @@ public class DataHandler {
     }
 
     /**
-     * gets the bookMap
+     * gets the playerMap
      *
-     * @return the bookMap
+     * @return the playerMap
      */
     public static Map<String, Player> getPlayerMap() {
         return playerMap;
     }
 
     /**
-     * gets the publisherMap
+     * gets the teamMap
      *
-     * @return the publisherMap
+     * @return the teamMap
      */
     public static Map<String, Team> getTeamMap() {
         return teamMap;
@@ -164,9 +165,9 @@ public class DataHandler {
     }
 
     /**
-     * inserts a new book into the bookmap
+     * inserts a new player into the playermap
      *
-     * @param player the book to be saved
+     * @param player the player to be saved
      */
     public static void insertPLayer(Player player) {
         getPlayerMap().put(player.getPlayerUUID(), player);
@@ -175,15 +176,16 @@ public class DataHandler {
 
     /**
      * updates the playerMap
+     *
      */
     public static void updatePlayer() {
         writeJSON();
     }
 
     /**
-     * removes a book from the bookmap
+     * removes a player from the playermap
      *
-     * @param playerUUID the uuid of the book to be removed
+     * @param playerUUID the uuid of the player to be removed
      * @return success
      */
     public static boolean deletePlayer(String playerUUID) {
@@ -195,24 +197,78 @@ public class DataHandler {
     }
 
     /**
-     * reads the books and publishers
+     * inserts a new team into the teamMap
+     *
+     * @param team the player to be saved
+     */
+    public static void insertTeam(Team team) {
+        Player player = new Player();
+        player.setPlayerUUID(UUID.randomUUID().toString());
+        player.setName("");
+        player.setTeam(team);
+        insertPLayer(player);
+    }
+
+    /**
+     * updates the teamMap
+     *
+     * @param team to save
+     */
+    public static boolean updateTeam(Team team) {
+        boolean found = false;
+        for (Map.Entry<String, Player> entry : getPlayerMap().entrySet()) {
+            Player player = entry.getValue();
+            if (player.getTeam().getTeamUUID().equals(team.getTeamUUID())) {
+                player.setTeam(team);
+                found = true;
+            }
+        }
+        writeJSON();
+        return found;
+    }
+
+    /**
+     * removes a team from the teamMap
+     *
+     * @param teamUUID the uuid of the team to be removed
+     * @return success
+     */
+    public static int deleteTeam(String teamUUID) {
+        int errorcode = 1;
+        for (Map.Entry<String, Player> entry : getPlayerMap().entrySet()) {
+            Player player = entry.getValue();
+            if (player.getTeam().getTeamUUID().equals(teamUUID)) {
+                if (player.getName() == null || player.getName().equals("")) {
+                    deletePlayer(player.getPlayerUUID());
+                    errorcode = 0;
+                } else {
+                    return -1;
+                }
+            }
+        }
+        writeJSON();
+        return errorcode;
+    }
+
+    /**
+     * reads the players and teams
      */
     private static void readJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(Paths.get(Config.getProperty("playerJSON")));
             ObjectMapper objectMapper = new ObjectMapper();
             Player[] players = objectMapper.readValue(jsonData, Player[].class);
-            for (Player book : players) {
-                String teamUUID = book.getTeam().getTeamUUID();
+            for (Player player : players) {
+                String teamUUID = player.getTeam().getTeamUUID();
                 Team team;
                 if (getTeamMap().containsKey(teamUUID)) {
                     team = getTeamMap().get(teamUUID);
                 } else {
-                    team = book.getTeam();
+                    team = player.getTeam();
                     getTeamMap().put(teamUUID, team);
                 }
-                book.setTeam(team);
-                getPlayerMap().put(book.getPlayerUUID(), book);
+                player.setTeam(team);
+                getPlayerMap().put(player.getPlayerUUID(), player);
 
             }
         } catch (IOException e) {
@@ -221,16 +277,16 @@ public class DataHandler {
     }
 
     /**
-     * write the books and publishers
+     * write the players and teams
      */
     private static void writeJSON() {
         ObjectMapper objectMapper = new ObjectMapper();
         Writer writer;
         FileOutputStream fileOutputStream = null;
 
-        String bookPath = Config.getProperty("playerJSON");
+        String playerPath = Config.getProperty("playerJSON");
         try {
-            fileOutputStream = new FileOutputStream(bookPath);
+            fileOutputStream = new FileOutputStream(playerPath);
             writer = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
             objectMapper.writeValue(writer, getPlayerMap().values());
         } catch (IOException ex) {

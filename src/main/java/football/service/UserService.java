@@ -31,7 +31,7 @@ public class UserService {
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readBook(@QueryParam("uuid") String userUUID) {
+    public Response readPlayer(@QueryParam("uuid") String userUUID) {
         User user = null;
         int httpStatus;
 
