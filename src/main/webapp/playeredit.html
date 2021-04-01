@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="David Feer"/>
+    <meta name="copyright" content="FG ICT - Bildungszentrum Zürichsee"/>
+    <meta name="project" content="Football"/>
+    <meta name="description" content="player form edit"/>
+    <title>Buch bearbeiten</title>
+</head>
+<body>
+<form id="playereditForm" name="playeredit">
+    <h3>Buch bearbeiten</h3>
+    <div id="message" style="color: red;"></div>
+    <button type="button" id="logoff">Abmelden</button>
+    <table>
+        <tr>
+            <td><label for="playerName">Buchtitel</label></td>
+            <td>
+                <input id="playerName" name="playerName" type="text" size="30" minlength="2" maxlength="30" required/>
+                <input id="playerUUID" name="playerUUID" type="hidden" />
+            </td>
+        </tr>
+        <tr>
+            <td><label for="team">Mannschaft</label></td>
+            <td>
+                <select id="team" name="teamUUID" required>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <button id="save" type="submit">Speichern</button>
+            </td>
+            <td>
+                <button id="reset" type="reset">Zurücksetzen</button>
+            </td>
+            <td>
+                <button id="cancel" type="button">Abbruch</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<script src="./js/jquery-3.6.0.min.js"></script>
+<script src="js/playeredit.js"></script>
+<script src="./js/util.js"></script>
+<script src="./js/js.cookie.js"></script>
+</body>
+</html>
