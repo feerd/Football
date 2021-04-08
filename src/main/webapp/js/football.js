@@ -34,9 +34,9 @@ function loadPlayers() {
         })
         .done(showPlayers)
         .fail(function (xhr, status, errorThrown) {
-            if (xhr.status == 403) {
+            if (xhr.status === 403) {
                 window.location.href = "./login.html";
-            } else if (xhr.status == 404) {
+            } else if (xhr.status === 404) {
                 $("#message").text("keine Bücher vorhanden");
             }else {
                 $("#message").text("Fehler beim Lesen der Bücher");
@@ -59,19 +59,12 @@ function showPlayers(playerData) {
         if (player.title) {
             let row = table.insertRow(-1);
             let cell = row.insertCell(-1);
-            cell.innerHTML = player.title;
+            cell.innerHTML = player.playerName;
+
 
             cell = row.insertCell(-1);
-            cell.innerHTML = player.author;
+            cell.innerHTML = player.team.team;
 
-            cell = row.insertCell(-1);
-            cell.innerHTML = player.publisher.publisher;
-
-            cell = row.insertCell(-1);
-            cell.innerHTML = player.price;
-
-            cell = row.insertCell(-1);
-            cell.innerHTML = player.isbn;
 
             cell = row.insertCell(-1);
             cell.innerHTML = "<a href='../playeredit.html?uuid=" + uuid + "'>Bearbeiten</a>";

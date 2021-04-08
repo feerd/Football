@@ -22,7 +22,7 @@ $(document).ready(function () {
      * listener for button [abbrechen], redirects to football
      */
     $("#cancel").click(function () {
-        window.location.href = "../football.html";
+        window.location.href = "/football.html";
     });
 
 
