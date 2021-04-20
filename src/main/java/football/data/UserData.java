@@ -32,7 +32,7 @@ public class UserData {
         List<User> userList = readJson();
 
         for (User entry: userList) {
-            if (entry.getUserName().equals(username) &&
+            if (entry.getUsername().equals(username) &&
                     entry.getPassword().equals(password)) {
                 user = entry;
             }

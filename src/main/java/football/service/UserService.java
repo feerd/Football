@@ -1,13 +1,12 @@
 package football.service;
 
 import football.data.DataHandler;
-import football.model.Player;
+import football.data.UserData;
 import football.model.User;
+import org.w3c.dom.UserDataHandler;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.annotation.PostConstruct;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.UUID;
@@ -21,6 +20,59 @@ import java.util.UUID;
  */
 @Path("user")
 public class UserService {
+
+
+    /**
+     * login the current user
+     *
+     * @param username
+     * @param password
+     * @return response object
+     */
+    @POST
+    @Path("login")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response login(
+            @FormParam("username") String username,
+            @FormParam("password") String password
+
+    ) {
+        int httpStatus;
+
+        User user = UserData.findUser(username, password);
+        if (user == null || user.getRole() == null || user.getRole().equals("guest")) {
+            httpStatus = 404;
+        } else {
+            httpStatus = 200;
+        }
+
+
+        Response response = Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+
+        return response;
+    }
+
+    /**
+     * logout the current user
+     *
+     * @return response object
+     */
+    @DELETE
+    @Path("logout")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response logout() {
+        int httpStatus = 200;
+        Response response = Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+
+        return response;
+    }
+
 
     /**
      * reads a single user identified by the userUUID
@@ -38,7 +90,7 @@ public class UserService {
         try {
             UUID.fromString(userUUID);
             user = DataHandler.readUser(userUUID);
-            if (user.getUserName() == null) {
+            if (user.getUsername() == null) {
                 httpStatus = 404;
             } else {
                 httpStatus = 200;

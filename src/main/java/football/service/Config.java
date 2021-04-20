@@ -2,6 +2,7 @@ package football.service;
 
 import football.model.Team;
 import football.model.Trainer;
+import football.model.User;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -90,6 +91,7 @@ public class Config extends Application {
         providers.add(PlayerService.class);
         providers.add(TeamService.class);
         providers.add(TrainerService.class);
+        providers.add(UserService.class);
         return providers;
     }
 }

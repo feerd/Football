@@ -8,17 +8,26 @@ package football.model;
  * @author David Feer
  */
 public class User {
+
     private String userUUID;
-    private String userName;
+    private String username;
     private String password;
+    private String role;
 
-
-    public String getUserName() {
-        return userName;
+    public User() {
+        setRole("guest");
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getRole() {
+        return role;
     }
 
     public String getPassword() {
@@ -29,18 +38,16 @@ public class User {
         this.password = password;
     }
 
-    /**
-     * logs the user on
-     */
-    public void logon() {
-
+    public void setRole(String role) {
+        this.role = role;
     }
 
-
-    /**
-     * logs the user off
-     */
-    public void logoff() {
-
+    public String getUserUUID() {
+        return userUUID;
     }
+
+    public void setUserUUID(String userUUID) {
+        this.userUUID = userUUID;
+    }
+
 }
