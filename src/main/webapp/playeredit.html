@@ -6,25 +6,25 @@
     <meta name="copyright" content="FG ICT - Bildungszentrum Zürichsee"/>
     <meta name="project" content="Football"/>
     <meta name="description" content="player form edit"/>
-    <title>Buch bearbeiten</title>
+    <title>Spieler bearbeiten</title>
 </head>
 <body>
 <form id="playereditForm" name="playeredit">
-    <h3>Buch bearbeiten</h3>
+    <h3>Spieler bearbeiten</h3>
     <div id="message" style="color: red;"></div>
     <button type="button" id="logoff">Abmelden</button>
     <table>
         <tr>
-            <td><label for="playerName">Buchtitel</label></td>
+            <td><label for="name">Spielername</label></td>
             <td>
-                <input id="playerName" name="playerName" type="text" size="30" minlength="2" maxlength="30" required/>
+                <input id="name" maxlength="30" minlength="2" name="name" required size="30" type="text"/>
                 <input id="playerUUID" name="playerUUID" type="hidden" />
             </td>
         </tr>
         <tr>
-            <td><label for="team">Mannschaft</label></td>
+            <td><label for="teamUUID">Mannschaft</label></td>
             <td>
-                <select id="team" name="teamUUID" required>
+                <select id="teamUUID" name="teamUUID" required>
                 </select>
             </td>
         </tr>

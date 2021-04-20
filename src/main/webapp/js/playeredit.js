@@ -22,7 +22,7 @@ $(document).ready(function () {
      * listener for button [abbrechen], redirects to football
      */
     $("#cancel").click(function () {
-        window.location.href = "/football.html";
+        window.location.href = "./football.html";
     });
 
 
@@ -61,8 +61,8 @@ function loadPlayer() {
  */
 function showPlayer(player) {
     $("#playerUUID").val(player.playerUUID);
-    $("#playerName").val(player.playerName);
-    $("#team").val(player.team.teamUUID);
+    $("#name").val(player.name);
+    $("#teamUUID").val(player.team.name);
 
 }
 
@@ -93,7 +93,7 @@ function savePlayer(form) {
             data: $("#playereditForm").serialize()
         })
         .done(function (jsonData) {
-            window.location.href = "../football.html"
+            window.location.href = ""
         })
         .fail(function (xhr, status, errorThrown) {
             if (xhr.status === 404) {
@@ -124,9 +124,9 @@ function loadTeams() {
 function showTeams(teams) {
 
     $.each(teams, function (uuid, team) {
-        $('#team').append($('<option>', {
+        $('#teamUUID').append($('<option>', {
             value: team.teamUUID,
-            text: team.team
+            text: team.name
         }));
     });
 }

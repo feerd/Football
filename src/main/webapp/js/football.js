@@ -9,20 +9,19 @@
 /**
  * register listeners and load all players
  */
+
 $(document).ready(function () {
     loadPlayers();
 
     /**
      * listener for buttons within shelfForm
      */
+
     $("#shelfForm").on("click", "button", function () {
         if (confirm("Wollen Sie dieses Buch wirklich löschen?")) {
             deletePlayer(this.value);
         }
     });
-
-
-
 });
 
 function loadPlayers() {
@@ -56,23 +55,19 @@ function showPlayers(playerData) {
     clearTable(table);
 
     $.each(playerData, function (uuid, player) {
-        if (player.title) {
+        if (player.name) {
             let row = table.insertRow(-1);
             let cell = row.insertCell(-1);
-            cell.innerHTML = player.playerName;
-
-
-            cell = row.insertCell(-1);
-            cell.innerHTML = player.team.team;
-
+            cell.innerHTML = player.name;
 
             cell = row.insertCell(-1);
-            cell.innerHTML = "<a href='../playeredit.html?uuid=" + uuid + "'>Bearbeiten</a>";
+            cell.innerHTML = player.team.name;
+
+            cell = row.insertCell(-1);
+            cell.innerHTML = "<a href='./playeredit.html?uuid=" + uuid + "'>Bearbeiten</a>";
 
             cell = row.insertCell(-1);
             cell.innerHTML = "<button type='button' id='delete_" + uuid + "' value='" + uuid + "'>Löschen</button>";
-
-
         }
     });
 }
