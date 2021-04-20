@@ -46,7 +46,7 @@ function loadPlayer() {
                 if (xhr.status === 403) {
                     window.location.href = "./login.html";
                 } else if (xhr.status == 404) {
-                    $("#message").text("Kein Buch gefunden");
+                    $("#message").text("Kein Team gefunden");
                 } else {
                     window.location.href = "../football.html";
                 }
@@ -98,6 +98,8 @@ function savePlayer(form) {
         .fail(function (xhr, status, errorThrown) {
             if (xhr.status === 404) {
                 $("#message").text("Dieser Spieler existiert nicht");
+            } else if (xhr.status === 403) {
+                $("#message").text("Du besitzt dieses Recht nicht!");
             } else {
                 $("#message").text("Fehler beim Speichern des Spielers");
             }

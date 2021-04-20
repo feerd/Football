@@ -33,11 +33,23 @@ public class PlayerService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listPlayers() {
-        Map<String, Player> playerMap = DataHandler.getPlayerMap();
+    public Response listPlayers(
+            @CookieParam("userRole") String userRole
+    ) {
+        Map<String, Player> playerMap = null;
+
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else if (userRole.equals("user") || userRole.equals("admin")) {
+            httpStatus = 200;
+            playerMap = DataHandler.getPlayerMap();
+        } else {
+            httpStatus = 404;
+        }
 
         Response response = Response
-                .status(200)
+                .status(httpStatus)
                 .entity(playerMap)
                 .build();
 
@@ -53,22 +65,31 @@ public class PlayerService {
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readPlayer(@QueryParam("uuid") String playerUUID) {
+    public Response readPlayer(
+            @QueryParam("uuid") String playerUUID,
+            @CookieParam("userRole") String userRole
+
+    ) {
         Player player = null;
         int httpStatus;
 
-        try {
-            UUID.fromString(playerUUID);
-            player = DataHandler.readPlayer(playerUUID);
-            if (player.getName() == null) {
-                httpStatus = 404;
-            } else {
-                httpStatus = 200;
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else if (userRole.equals("user") || userRole.equals("admin")) {
+            try {
+                UUID.fromString(playerUUID);
+                player = DataHandler.readPlayer(playerUUID);
+                if (player.getName() == null) {
+                    httpStatus = 404;
+                } else {
+                    httpStatus = 200;
+                }
+            } catch (IllegalArgumentException argumentException) {
+                httpStatus = 400;
             }
-        } catch (IllegalArgumentException argumentException) {
-            httpStatus = 400;
+        } else {
+            httpStatus = 404;
         }
-
 
         Response response = Response
                 .status(httpStatus)
@@ -97,20 +118,27 @@ public class PlayerService {
             @FormParam("teamUUID")
             @NotEmpty
             @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                    String teamUUID
+                    String teamUUID,
+            @CookieParam("userRole") String userRole
 
     ) {
-        int httpStatus = 200;
-        Player player = new Player();
-        player.setPlayerUUID(UUID.randomUUID().toString());
-        setValues(
-                player,
-                name,
-                teamUUID
+        int httpStatus;
+        if (userRole == null || userRole.equals("user") || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else if (userRole.equals("admin")) {
+            httpStatus = 200;
+            Player player = new Player();
+            player.setPlayerUUID(UUID.randomUUID().toString());
+            setValues(
+                    player,
+                    name,
+                    teamUUID
 
-        );
-
-        DataHandler.insertPLayer(player);
+            );
+            DataHandler.insertPLayer(player);
+        } else {
+            httpStatus = 404;
+        }
 
         Response response = Response
                 .status(httpStatus)
@@ -144,26 +172,34 @@ public class PlayerService {
             @FormParam("teamUUID")
             @NotEmpty
             @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                    String teamUUID
+                    String teamUUID,
+            @CookieParam("userRole") String userRole
+
     ) {
-        int httpStatus = 200;
-        Player player;
-        try {
-            UUID.fromString(playerUUID);
-            player = DataHandler.readPlayer(playerUUID);
-            if (player.getName() != null) {
-                httpStatus = 200;
-                setValues(
-                        player,
-                        name,
-                        teamUUID
-                );
-                DataHandler.updatePlayer();
-            } else {
-                httpStatus = 404;
+        int httpStatus;
+        if (userRole == null || userRole.equals("user") || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else if (userRole.equals("admin")) {
+            Player player;
+            try {
+                UUID.fromString(playerUUID);
+                player = DataHandler.readPlayer(playerUUID);
+                if (player.getName() != null) {
+                    httpStatus = 200;
+                    setValues(
+                            player,
+                            name,
+                            teamUUID
+                    );
+                    DataHandler.updatePlayer();
+                } else {
+                    httpStatus = 404;
+                }
+            } catch (IllegalArgumentException argEx) {
+                httpStatus = 400;
             }
-        } catch (IllegalArgumentException argEx) {
-            httpStatus = 400;
+        } else {
+            httpStatus = 404;
         }
 
         Response response = Response
@@ -186,20 +222,28 @@ public class PlayerService {
             @FormParam("uuid")
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-                    String playerUUID
+                    String playerUUID,
+            @CookieParam("userRole") String userRole
     ) {
         int httpStatus;
-        try {
-            UUID.fromString(playerUUID);
 
-            if (DataHandler.deletePlayer(playerUUID)) {
-                httpStatus = 200;
+        if (userRole == null || userRole.equals("user") || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else if (userRole.equals("admin")) {
+            try {
+                UUID.fromString(playerUUID);
 
-            } else {
-                httpStatus = 404;
+                if (DataHandler.deletePlayer(playerUUID)) {
+                    httpStatus = 200;
+
+                } else {
+                    httpStatus = 404;
+                }
+            } catch (IllegalArgumentException argEx) {
+                httpStatus = 400;
             }
-        } catch (IllegalArgumentException argEx) {
-            httpStatus = 400;
+        } else {
+            httpStatus = 404;
         }
 
         Response response = Response
