@@ -38,7 +38,7 @@ function loadPlayers() {
             } else if (xhr.status === 404) {
                 $("#message").text("keine Bücher vorhanden");
             }else {
-                $("#message").text("Fehler beim Lesen der Bücher");
+                $("#message").text("Fehler beim Lesen der Spieler");
             }
         })
 

@@ -246,6 +246,7 @@ public class DataHandler {
                 }
             }
         }
+
         writeJSON();
         return errorcode;
     }
