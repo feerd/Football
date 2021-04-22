@@ -123,11 +123,12 @@ public class PlayerService {
 
     ) {
         int httpStatus;
+        Player player = new Player();
         if (userRole == null || userRole.equals("user") || userRole.equals("guest")) {
             httpStatus = 403;
         } else if (userRole.equals("admin")) {
             httpStatus = 200;
-            Player player = new Player();
+
             player.setPlayerUUID(UUID.randomUUID().toString());
             setValues(
                     player,
@@ -219,7 +220,7 @@ public class PlayerService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deletePlayer(
-            @FormParam("uuid")
+            @QueryParam("uuid")
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
                     String playerUUID,

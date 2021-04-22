@@ -157,7 +157,7 @@ public class TeamService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteTeam(
-            @FormParam("teamUUID") String teamUUID
+            @QueryParam("teamUUID") String teamUUID
     ) {
         int httpStatus;
         try {
