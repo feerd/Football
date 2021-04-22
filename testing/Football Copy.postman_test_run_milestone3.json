@@ -1,0 +1,641 @@
+{
+	"id": "d684ba66-7b38-4e73-bcc6-7546297f3244",
+	"name": "Football Copy",
+	"timestamp": "2021-04-22T08:24:28.259Z",
+	"collection_id": "0f28e1c5-8861-4e58-ab6a-4b99558305fd",
+	"folder_id": 0,
+	"environment_id": "68d33161-aa65-4d63-a71a-b484d564269d",
+	"totalPass": 20,
+	"totalFail": 1,
+	"results": [
+		{
+			"id": "fb15db41-b1d2-40da-ba9f-5aae6926706f",
+			"name": "0.1 Testservice",
+			"url": "http://localhost:8080/Bookshelf-0.1/resource/test/test",
+			"time": 44,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				44
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8f415af3-2c6e-4298-8359-5d0fa1eb1f0f",
+			"name": "LU07.1 Login No such user",
+			"url": "http://localhost:8080/Football-1.0/resource/user/login",
+			"time": 77,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				77
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "7eca766c-0f42-4a36-a56c-ea03fe2babee",
+			"name": "LU07.2 Login User",
+			"url": "http://localhost:8080/Football-1.0/resource/user/login",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "ec2f430c-d9a7-4a44-bb01-47f0beb4eec8",
+			"name": "LU07.3 Insert Player With User",
+			"url": "http://localhost:8080/Football-1.0/resource/player/create",
+			"time": 29,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				29
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "918b0054-9f64-4108-be89-96c84a5898b8",
+			"name": "LU07.4 Login Admin",
+			"url": "http://localhost:8080/Football-1.0/resource/user/login",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "0b06b35e-4d37-43ac-b1a5-d90ba2ccaf76",
+			"name": "LU3.1 Spielerliste",
+			"url": "http://localhost:8080/Football-1.0/resource/player/list",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"validate response": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"validate response": true
+				}
+			]
+		},
+		{
+			"id": "d6c8ad55-48ea-4c36-be73-708faf80edc7",
+			"name": "LU3.2 Read player",
+			"url": "http://localhost:8080/Football-1.0/resource/player/read?uuid=7cf55378-7eb2-4098-8ba1-e17e9fb04587",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"validate response": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"validate response": true
+				}
+			]
+		},
+		{
+			"id": "b09b665b-ef68-443c-8dd4-228026cfaf59",
+			"name": "LU3.3 Read unkown Player",
+			"url": "http://localhost:8080/Football-1.0/resource/player/read?uuid=3247c340-ffff-402e-b400-0a23a9368c97",
+			"time": 12,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "1499e33b-9fc6-4960-ae07-c27730050e4c",
+			"name": "LU3.4 Read player with inavlid uuid",
+			"url": "http://localhost:8080/Football-1.0/resource/player/read?uuid=3247c340-xyzq-402e-b400-0a23a9368c97",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "06b291ad-5b92-4860-9954-334a2d5654f3",
+			"name": "LU03.5 All Teams",
+			"url": "http://localhost:8080/Football-1.0/resource/team/list",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "e5143fb2-5c9f-43d7-9bfc-7aea30a2e401",
+			"name": "LU03.6 Read Team",
+			"url": "http://localhost:8080/Football-1.0/resource/team/read?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "103ae3ab-fa46-4d3c-8229-4611ddc7194c",
+			"name": "LU03.7 Read unknown Team",
+			"url": "http://localhost:8080/Football-1.0/resource/team/read?uuid=fff86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 18,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				18
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "23f364ff-c102-4b3b-a42c-ca982492e34f",
+			"name": "LU03.8 Read Team with invalid uuid",
+			"url": "http://localhost:8080/Football-1.0/resource/team/read?uuid=fff86148-5341-43c6-81ed",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "e95e9509-2cd2-4aad-aab3-c14cf5f57bc4",
+			"name": "LU04.1 Insert Player",
+			"url": "http://localhost:8080/Football-1.0/resource/player/create",
+			"time": 33,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				33
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "80c6cd31-cba2-4d9c-9dfc-b33dffff72dd",
+			"name": "LU04.2Update Player",
+			"url": "http://localhost:8080/Football-1.0/resource/player/update",
+			"time": 22,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				22
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "476937ff-3e14-4cc3-b392-b7fee243242d",
+			"name": "LU04.3 Update unknown Player",
+			"url": "http://localhost:8080/Football-1.0/resource/book/update",
+			"time": 59,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				59
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "fba684f6-b66b-4cb2-9408-6469559763ba",
+			"name": "LU04.5 Delete Player",
+			"url": "http://localhost:8080/Football-1.0/resource/player/delete?uuid=7cf55378-7eb2-4098-8ba1-e17e9fb04587",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "8a7b1068-d351-48a2-90e9-b2ca0dcd8668",
+			"name": "LU04.10 Insert Team",
+			"url": "http://localhost:8080/Football-1.0/resource/team/create",
+			"time": 16,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "bed13a5c-660b-42c1-942d-ed9d8cb0fb8e",
+			"name": "LU04.11 Update Team",
+			"url": "http://localhost:8080/Football-1.0/resource/team/update",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "ad7a0d6e-dcb0-4395-b413-8242ef0a7a38",
+			"name": "LU04.12  Delete Team",
+			"url": "http://localhost:8080/Football-1.0/resource/team/delete?teamUUID=ecd86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 34,
+			"responseCode": {
+				"code": 409,
+				"name": "Conflict"
+			},
+			"tests": {
+				"Status test": false
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				34
+			],
+			"allTests": [
+				{
+					"Status test": false
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 449,
+	"collection": {
+		"requests": [
+			{
+				"id": "fb15db41-b1d2-40da-ba9f-5aae6926706f",
+				"method": "GET"
+			},
+			{
+				"id": "8f415af3-2c6e-4298-8359-5d0fa1eb1f0f",
+				"method": "POST"
+			},
+			{
+				"id": "7eca766c-0f42-4a36-a56c-ea03fe2babee",
+				"method": "POST"
+			},
+			{
+				"id": "ec2f430c-d9a7-4a44-bb01-47f0beb4eec8",
+				"method": "POST"
+			},
+			{
+				"id": "918b0054-9f64-4108-be89-96c84a5898b8",
+				"method": "POST"
+			},
+			{
+				"id": "0b06b35e-4d37-43ac-b1a5-d90ba2ccaf76",
+				"method": "GET"
+			},
+			{
+				"id": "d6c8ad55-48ea-4c36-be73-708faf80edc7",
+				"method": "GET"
+			},
+			{
+				"id": "b09b665b-ef68-443c-8dd4-228026cfaf59",
+				"method": "GET"
+			},
+			{
+				"id": "1499e33b-9fc6-4960-ae07-c27730050e4c",
+				"method": "GET"
+			},
+			{
+				"id": "06b291ad-5b92-4860-9954-334a2d5654f3",
+				"method": "GET"
+			},
+			{
+				"id": "e5143fb2-5c9f-43d7-9bfc-7aea30a2e401",
+				"method": "GET"
+			},
+			{
+				"id": "103ae3ab-fa46-4d3c-8229-4611ddc7194c",
+				"method": "GET"
+			},
+			{
+				"id": "23f364ff-c102-4b3b-a42c-ca982492e34f",
+				"method": "GET"
+			},
+			{
+				"id": "e95e9509-2cd2-4aad-aab3-c14cf5f57bc4",
+				"method": "POST"
+			},
+			{
+				"id": "80c6cd31-cba2-4d9c-9dfc-b33dffff72dd",
+				"method": "PUT"
+			},
+			{
+				"id": "476937ff-3e14-4cc3-b392-b7fee243242d",
+				"method": "PUT"
+			},
+			{
+				"id": "fba684f6-b66b-4cb2-9408-6469559763ba",
+				"method": "DELETE"
+			},
+			{
+				"id": "8a7b1068-d351-48a2-90e9-b2ca0dcd8668",
+				"method": "POST"
+			},
+			{
+				"id": "bed13a5c-660b-42c1-942d-ed9d8cb0fb8e",
+				"method": "PUT"
+			},
+			{
+				"id": "ad7a0d6e-dcb0-4395-b413-8242ef0a7a38",
+				"method": "DELETE"
+			}
+		]
+	}
+}
